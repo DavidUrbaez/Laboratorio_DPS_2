@@ -107,7 +107,7 @@ def get_wavelet_correlation_modes(x,plot):
 def classifier_only_ecg(df_wcm):
 
     #df_wcm=pd.read_csv("wcm.csv")
-    df_y,df_x=df_wcm["out"],df_wcm.iloc[:,2:27]
+    df_y,df_x=df_wcm["out"],df_wcm.iloc[:,2:7]
     
     from sklearn.preprocessing import StandardScaler
     from sklearn.decomposition import PCA
@@ -119,7 +119,7 @@ def classifier_only_ecg(df_wcm):
     scaler = StandardScaler()
     df_x_t=scaler.fit_transform(df_x)
 
-    df_x_t_pca = PCA(n_components=25).fit_transform(df_x_t)
+    df_x_t_pca = PCA(n_components=5).fit_transform(df_x_t)
     
     y= df_y.values.ravel()
     X=df_x_t_pca
